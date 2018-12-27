@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+	<h1>New task</h1>
+
+	<div>
+		<%= form_for :task do |f| %>
+
+			<%= f.text_area :body %>
+			<%= f.submit "Create" %>
+
+		<% end %>
+
+		<%= link_to "Cancel", "/" %>
+	</div>
+</html>
