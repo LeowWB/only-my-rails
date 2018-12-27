@@ -1,6 +1,12 @@
 <!DOCTYPE HTML>
 <html>
+	<h1>All tasks</h1>
+
 	<div>
-		<%= "test" %>
+		<% @tasks.each do |t| %>
+			<div>
+				<%= t.body %>
+			</div>
+		<% end %>
 	</div>
 </html>
