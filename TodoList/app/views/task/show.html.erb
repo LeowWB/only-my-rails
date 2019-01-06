@@ -2,7 +2,9 @@
 <html>
 	<h1> <%= @task.head %> </h1>
 	<div><%= @task.body %> </div>
+
 	<%= link_to "Edit", "/tasks/#{@task.id}/edit" %>
-	<!-- delete also-->
+	<%= link_to "Delete", "/tasks/#{@task.id}", method:"delete"%>
+	
 	<%= link_to "Back", "/" %>
 </html>

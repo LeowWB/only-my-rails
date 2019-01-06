@@ -5,5 +5,6 @@
 		<%= f.text_field :body, value: @task.body %>
 		<%= f.submit "Confirm" %>
 	<% end %>
+	
 	<%= link_to "Cancel", "/tasks/#{@task.id}" %>
 </html>

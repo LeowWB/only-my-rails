@@ -36,6 +36,15 @@ class TaskController < ApplicationController
 		end
 	end
 
+	def destroy
+		@task = Task.find(params[:id])
+
+		if @task.destroy
+			redirect_to "/"
+		else
+			render "edit"
+		end
+	end
 	
 
 	private
