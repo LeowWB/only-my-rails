@@ -1,0 +1,9 @@
+<!DOCTYPE HTML>
+<html>
+	<%= form_for @task do |f| %>
+		<%= f.text_field :head, value: @task.head %>
+		<%= f.text_field :body, value: @task.body %>
+		<%= f.submit "Confirm" %>
+	<% end %>
+	<%= link_to "Cancel", "/tasks/#{@task.id}" %>
+</html>
