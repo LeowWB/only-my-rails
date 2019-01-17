@@ -6,7 +6,9 @@
 	<div>
 		Tags:
 		<% @tags.each do |tg| %>
-			<%= tg.name %>,
+			<%= tg.name %>
+			<%= link_to "x", "/tasks/#{@task.id}/delete_tag/#{tg.id}", method:"delete" %>
+			<br>
 		<% end %>
 	</div>
 

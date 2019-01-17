@@ -12,6 +12,16 @@ class TagController < ApplicationController
 	end
 
 
+	def destroy
+		@tag = Tag.find params[:tag_id]
+
+		if @tag.destroy
+			redirect_to task_path(Task.find params[:id])
+		else
+			render "/"
+		end
+	end
+
 
 	private 
 

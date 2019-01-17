@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   delete "/tasks/:id" => "task#destroy"
 
   post "/tasks/:id/" => "tag#create"
+  delete "/tasks/:id/delete_tag/:tag_id" => "tag#destroy"
   
 end
