@@ -3,6 +3,18 @@
 	<h1> <%= @task.head %> </h1>
 	<div><%= @task.body %> </div>
 
+	<div>
+		Tags:
+		<% @tags.each do |tg| %>
+			<%= tg.name %>,
+		<% end %>
+	</div>
+
+	<%= form_for :tag do |f|%>
+		<%= f.text_field :name %>
+		<%= f.submit "Add tag" %>
+	<% end %>
+
 	<%= link_to "Edit", "/tasks/#{@task.id}/edit" %>
 	<%= link_to "Delete", "/tasks/#{@task.id}", method:"delete"%>
 	

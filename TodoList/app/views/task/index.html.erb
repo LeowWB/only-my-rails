@@ -10,6 +10,17 @@
 		<% @tasks.each do |t| %>
 			<div>
 				<%= link_to t.head, task_path(t) %>
+				
+				<br>
+				Tags: 
+
+				<% @tags.each do |tg| %>
+					<% if tg.task_id == t.id %>
+						<%= tg.name %>,
+					<% end %>
+				<% end %>
+
+				<br>
 			</div>
 		<% end %>
 	</div>

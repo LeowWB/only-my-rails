@@ -2,6 +2,7 @@ class TaskController < ApplicationController
 
 	def index
 		@tasks = Task.all
+		@tags = Tag.all
 	end
 
 	def new
@@ -20,10 +21,12 @@ class TaskController < ApplicationController
 
 	def show
 		@task = Task.find(params[:id])
+		@tags = @task.tags
 	end
 
 	def edit
 		@task = Task.find(params[:id])
+		@tags = @task.tags
 	end
 
 	def update

@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   get "/tasks/:id/edit" => "task#edit", as: :edit_task
   patch "/tasks/:id" => "task#update"
   delete "/tasks/:id" => "task#destroy"
+
+  post "/tasks/:id/" => "tag#create"
   
 end
