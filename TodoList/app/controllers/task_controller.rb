@@ -74,6 +74,8 @@ class TaskController < ApplicationController
 		end
 
 		@results.uniq!
+
+		@tags = Tag.all
 	end
 
 

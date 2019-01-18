@@ -5,7 +5,20 @@
 			No results found.
 		<% else %>
 			<% @results.each do |t| %>
-				<%= t.head %>
+				<div>
+				<%= link_to t.head, task_path(t) %>
+				
+				<br>
+				Tags: 
+
+				<% @tags.each do |tg| %>
+					<% if tg.task_id == t.id %>
+						<%= tg.name %>,
+					<% end %>
+				<% end %>
+
+				<br>
+				</div>
 			<% end %>
 		<% end %>
 
