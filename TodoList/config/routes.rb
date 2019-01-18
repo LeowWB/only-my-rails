@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   post "/tasks/:id/" => "tag#create"
   delete "/tasks/:id/delete_tag/:tag_id" => "tag#destroy"
   
+  get "/search" => "task#search"
 end

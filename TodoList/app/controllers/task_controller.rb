@@ -49,6 +49,9 @@ class TaskController < ApplicationController
 		end
 	end
 	
+	def search
+	end
+
 
 	private
 
