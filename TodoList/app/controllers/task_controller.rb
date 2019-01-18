@@ -52,17 +52,17 @@ class TaskController < ApplicationController
 	def search
 	end
 
-	def find
-		@results = Task.find_by head: (search_params)[:search_content]
+	def results
+
+		search_parameters = search_params
+
+		@results = Task.where head: search_parameters[:search_content]
 
 		#remove duplicates
 
 		#handle substring search
+		#handle ignore case
 		#if results is nil
-		redirect_to "/search/results"
-	end
-
-	def results
 	end
 
 

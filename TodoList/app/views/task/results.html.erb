@@ -1,4 +1,12 @@
 <!DOCTYPE html>
 <html>
-	TEST
+	<div>
+		<% if @results == nil %>
+			No results found.
+		<% else %>
+			<% @results.each do |t| %>
+				<%= t.head %>
+			<% end %>
+		<% end %>
+	</div>
 </html>
