@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
-	<%= form_for :search_term do |f| %>
-		Search by content:<%= f.text_field :search_content %>
-		Search by tag:<%= f.text_field :search_tag %>
-		<%= f.submit "Search" %>
-	<% end %>
+	<h1>Search</h1>
 
-	<%= link_to "Back", "/" %>
+	<div>
+		<%= form_for :search_term do |f| %>
+			Search by content:<%= f.text_field :search_content %><br>
+			Search by tag:<%= f.text_field :search_tag %>
+
+			<br>
+
+			<%= f.radio_button :search_type, "or" %>Match at least one <br>
+			<%= f.radio_button :search_type, "and" %>Match both<br>
+
+			<%= f.submit "Search" %>
+		<% end %>
+
+		<%= link_to "Back", "/" %>
+	</div>
 </html>
