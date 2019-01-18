@@ -1,4 +1,8 @@
 <!DOCTYPE html>
 <html>
-	test
+	<%= form_for :search_term do |f| %>
+		Search by content:<%= f.text_field :search_content %>
+		Search by tag:<%= f.text_field :search_tag %>
+		<%= f.submit "Search" %>
+	<% end %>
 </html>
