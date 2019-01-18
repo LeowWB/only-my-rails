@@ -52,10 +52,27 @@ class TaskController < ApplicationController
 	def search
 	end
 
+	def find
+		@results = Task.find_by head: (search_params)[:search_content]
+
+		#remove duplicates
+
+		#handle substring search
+		#if results is nil
+		redirect_to "/search/results"
+	end
+
+	def results
+	end
+
 
 	private
 
 	def task_params
 		params.require(:task).permit(:head, :body)
+	end
+
+	def search_params
+		params.require(:search_term).permit(:search_content, :search_tag)
 	end
 end
