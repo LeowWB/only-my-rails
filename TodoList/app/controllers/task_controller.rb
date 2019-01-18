@@ -55,9 +55,24 @@ class TaskController < ApplicationController
 	def results
 
 		search_parameters = search_params
+		search_content = search_parameters[:search_content]
+		search_tag = search_parameters[:search_tag]
 
-		@results = Task.where "head LIKE ?", "%" + search_parameters[:search_content] + "%"
-		@results += Task.where "body LIKE ?", "%" + search_parameters[:search_content] + "%"
+		@results = []
+
+		if search_content.strip != ""
+			@results += Task.where "head LIKE ?", "%" + search_content + "%"
+			@results += Task.where "body LIKE ?", "%" + search_content + "%"
+		end
+		
+		if search_tag.strip != ""
+			@matched_tags = Tag.where name: search_tag
+
+			@matched_tags.each do |tg|
+				@results.append tg.task
+			end
+		end
+
 		@results.uniq!
 	end
 
