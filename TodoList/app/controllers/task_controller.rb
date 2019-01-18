@@ -56,11 +56,11 @@ class TaskController < ApplicationController
 
 		search_parameters = search_params
 
-		@results = Task.where head: search_parameters[:search_content]
+		@results = Task.where "head LIKE ?", "%" + search_parameters[:search_content] + "%"
+		@results += Task.where "body LIKE ?", "%" + search_parameters[:search_content] + "%"
 
 		#remove duplicates
-
-		#handle substring search
+		
 		#handle ignore case
 		#if results is nil
 	end
