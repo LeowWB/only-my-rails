@@ -9,7 +9,7 @@
 
 			<br>
 
-			<%= f.radio_button :search_type, "or" %>Match at least one <br>
+			<%= f.radio_button :search_type, "or", checked: true %>Match at least one <br>
 			<%= f.radio_button :search_type, "and" %>Match both<br>
 
 			<%= f.submit "Search" %>

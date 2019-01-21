@@ -57,20 +57,50 @@ class TaskController < ApplicationController
 		search_parameters = search_params
 		search_content = search_parameters[:search_content]
 		search_tag = search_parameters[:search_tag]
+		search_type = search_parameters[:search_type]
 
 		@results = []
 
-		if search_content.strip != ""
-			@results += Task.where "head LIKE ?", "%" + search_content + "%"
-			@results += Task.where "body LIKE ?", "%" + search_content + "%"
-		end
-		
-		if search_tag.strip != ""
-			@matched_tags = Tag.where name: search_tag
+		if search_type == "or"
 
-			@matched_tags.each do |tg|
-				@results.append tg.task
+			if search_content.strip != ""
+				@results += Task.where "head LIKE ?", "%" + search_content + "%"
+				@results += Task.where "body LIKE ?", "%" + search_content + "%"
 			end
+			
+			if search_tag.strip != ""
+				@matched_tags = Tag.where name: search_tag
+
+				@matched_tags.each do |tg|
+					@results.append tg.task
+				end
+			end
+
+		elsif search_type == "and"
+
+			temp_results = []
+
+			if search_content.strip != ""
+				temp_results += Task.where "head LIKE ?", "%" + search_content + "%"
+				temp_results += Task.where "body LIKE ?", "%" + search_content + "%"
+			end
+			
+			if search_tag.strip != ""
+
+				@matched_tags = Tag.where name: search_tag
+
+				temp_results.each do |r|
+					
+					@matched_tags.each do |tg|
+						
+						if tg.task.id == r.id
+							@results.append r
+							break
+						end
+					end
+				end
+			end
+			
 		end
 
 		@results.uniq!
@@ -86,6 +116,6 @@ class TaskController < ApplicationController
 	end
 
 	def search_params
-		params.require(:search_term).permit(:search_content, :search_tag)
+		params.require(:search_term).permit(:search_content, :search_tag, :search_type)
 	end
 end
