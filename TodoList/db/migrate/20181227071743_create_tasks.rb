@@ -5,7 +5,7 @@ class CreateTasks < ActiveRecord::Migration[5.2]
 		t.string :head
 		t.string :body
 		
-		#does not reference tags, because it's a one-to-many relationship. one task has many tags.
+		#does not reference tag; mapping between task and tag is done by tagging
 
 		t.timestamps
     end

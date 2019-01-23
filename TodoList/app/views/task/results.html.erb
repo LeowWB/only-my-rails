@@ -12,10 +12,8 @@
 				<br>
 				Tags: 
 
-				<% @tags.each do |tg| %>
-					<% if tg.task_id == t.id %>
-						<%= tg.name %>,
-					<% end %>
+				<% t.tags.each do |tg| %>
+					<%= tg.name %>,
 				<% end %>
 
 				<br>

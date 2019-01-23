@@ -3,7 +3,8 @@ class CreateTags < ActiveRecord::Migration[5.2]
     create_table :tags do |t|
 
 	  t.string :name
-	  t.references :task
+	  
+	  #doesn't reference task - mapping between tags and tasks is done by tagging
 
       t.timestamps
     end

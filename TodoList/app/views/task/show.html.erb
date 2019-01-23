@@ -9,7 +9,7 @@
 
 	<div>
 		Tags:
-		<% @tags.each do |tg| %>
+		<% @task.tags.each do |tg| %>
 			<%= tg.name %>
 			<%= link_to "x", "/tasks/#{@task.id}/delete_tag/#{tg.id}", method:"delete" %>
 			<br>

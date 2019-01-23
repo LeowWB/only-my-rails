@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   patch "/tasks/:id" => "task#update"
   delete "/tasks/:id" => "task#destroy"
 
-  post "/tasks/:id/" => "tag#create"
-  delete "/tasks/:id/delete_tag/:tag_id" => "tag#destroy"
+  post "/tasks/:id/" => "tagging#create"
+  delete "/tasks/:id/delete_tag/:tag_id" => "tagging#destroy"
   
   get "/search" => "task#search"
   post "/search" => "task#results"

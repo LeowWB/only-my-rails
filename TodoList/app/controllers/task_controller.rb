@@ -2,7 +2,6 @@ class TaskController < ApplicationController
 
 	def index
 		@tasks = Task.all
-		@tags = Tag.all
 	end
 
 	def new
@@ -71,8 +70,10 @@ class TaskController < ApplicationController
 			if search_tag.strip != ""
 				@matched_tags = Tag.where name: search_tag
 
-				@matched_tags.each do |tg|
-					@results.append tg.task
+				if @matched_tags.any?
+					@matched_tags[0].tasks.each do |t|
+						@results.append t
+					end
 				end
 			end
 
@@ -89,13 +90,15 @@ class TaskController < ApplicationController
 
 				@matched_tags = Tag.where name: search_tag
 
-				temp_results.each do |r|
-					
-					@matched_tags.each do |tg|
+				if @matched_tags.any?
+					temp_results.each do |r|
 						
-						if tg.task.id == r.id
-							@results.append r
-							break
+						@matched_tags[0].tasks.each do |t|
+							
+							if t.id == r.id
+								@results.append r
+								break
+							end
 						end
 					end
 				end

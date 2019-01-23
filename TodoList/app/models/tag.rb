@@ -1,3 +1,4 @@
 class Tag < ApplicationRecord
-	belongs_to :task
+	has_many :taggings
+	has_many :tasks, through: :taggings
 end
