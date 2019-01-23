@@ -38,7 +38,14 @@ class TaggingController < ApplicationController
 		@tagging = Tagging.where task: @task, tag: @tag
 
 		if @tagging[0].destroy
-			redirect_to task_path(@task)
+			if @tag.taggings.any?
+				redirect_to task_path(@task)
+			elsif @tag.destroy
+				redirect_to task_path(@task)
+			else
+				render "/"
+			end
+
 		else
 			render "/"
 		end
