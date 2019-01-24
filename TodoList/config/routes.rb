@@ -15,4 +15,11 @@ Rails.application.routes.draw do
   
   get "/search" => "task#search"
   post "/search" => "task#results"
+
+  get "/signup" => "user#new"
+  post "/signup" => "user#create"
+
+  get "/login" => "session#new"
+  post "/login" => "session#create"
+
 end

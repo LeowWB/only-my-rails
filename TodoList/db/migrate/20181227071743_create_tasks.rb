@@ -4,6 +4,7 @@ class CreateTasks < ActiveRecord::Migration[5.2]
 
 		t.string :head
 		t.string :body
+		t.references :user
 		
 		#does not reference tag; mapping between task and tag is done by tagging
 

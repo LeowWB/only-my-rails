@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+	<div>
+		<%= form_for @user do |f| %>
+			<%= f.text_field :username %>
+			<%= f.text_field :password %>
+			<%= f.submit "Create account" %>
+		<% end %>
+	</div>
+</html>

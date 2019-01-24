@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+	<div>
+		<%= form_for :session, url: "/login" do |f|%>
+
+			<%= f.text_field :username %>
+			<%= f.text_field :password %>
+			<%= f.submit "Login" %>
+
+		<% end %>
+	</div>
+</html>
