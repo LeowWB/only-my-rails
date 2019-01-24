@@ -10,6 +10,16 @@
   </head>
 
   <body>
+
+	<% if current_user %>
+		<%= link_to "Main", "/" %>
+		<%= current_user().username %>
+		<%= link_to "Logout", "/logout", method: "delete" %>
+	<% else %>
+		<%= link_to "Sign in", "/login" %>
+		<%= link_to "Sign up", "/signup" %>
+	<% end %>
+
     <%= yield %>
   </body>
 </html>
