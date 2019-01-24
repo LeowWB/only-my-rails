@@ -5,7 +5,9 @@ class UserController < ApplicationController
 	end
 
 	def create
-		@user = User.new user_params
+		@user = User.new
+		@user.username = params[:user][:username]
+		@user.password_digest = BCrypt::Password.create(params[:user][:password])
 
 		if @user.save
 			session[:user_id] = @user.id
@@ -13,11 +15,5 @@ class UserController < ApplicationController
 		else
 			redirect_to '/signup'
 		end
-	end
-
-	private
-
-	def user_params
-		params.require(:user).permit(:username, :password)
 	end
 end
