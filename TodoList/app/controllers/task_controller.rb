@@ -1,7 +1,9 @@
 class TaskController < ApplicationController
 
+	before_action :require_user
+
 	def index
-		@tasks = Task.all
+		@tasks = Task.where user: current_user
 	end
 
 	def new
@@ -10,6 +12,7 @@ class TaskController < ApplicationController
 
 	def create
 		@task = Task.new task_params
+		@task.user = current_user
 
 		if @task.save
 			redirect_to "/"
@@ -21,15 +24,21 @@ class TaskController < ApplicationController
 	def show
 		@task = Task.find(params[:id])
 		@tags = @task.tags
+
+		redirect_to "/" unless @task.user.id == current_user().id
 	end
 
 	def edit
 		@task = Task.find(params[:id])
 		@tags = @task.tags
+
+		redirect_to "/" unless @task.user.id == current_user().id
 	end
 
 	def update
 		@task = Task.find(params[:id])
+		
+		redirect_to "/" unless @task.user.id == current_user().id
 
 		if @task.update_attributes task_params
 			redirect_to action: "show", id: @task.id
@@ -40,6 +49,8 @@ class TaskController < ApplicationController
 
 	def destroy
 		@task = Task.find(params[:id])
+		
+		redirect_to "/" unless @task.user.id == current_user().id
 
 		if @task.destroy && @task.taggings.destroy_all
 			redirect_to "/"
@@ -63,12 +74,12 @@ class TaskController < ApplicationController
 		if search_type == "or"
 
 			if search_content.strip != ""
-				@results += Task.where "head LIKE ?", "%" + search_content + "%"
-				@results += Task.where "body LIKE ?", "%" + search_content + "%"
+				@results += Task.where "head LIKE ? AND user_id=?", "%" + search_content + "%", current_user().id
+				@results += Task.where "body LIKE ? AND user_id=?", "%" + search_content + "%", current_user().id
 			end
 			
 			if search_tag.strip != ""
-				@matched_tags = Tag.where name: search_tag
+				@matched_tags = Tag.where name: search_tag, user: current_user
 
 				if @matched_tags.any?
 					@matched_tags[0].tasks.each do |t|
@@ -82,13 +93,13 @@ class TaskController < ApplicationController
 			temp_results = []
 
 			if search_content.strip != ""
-				temp_results += Task.where "head LIKE ?", "%" + search_content + "%"
-				temp_results += Task.where "body LIKE ?", "%" + search_content + "%"
+				temp_results += Task.where "head LIKE ? AND user_id=?", "%" + search_content + "%", current_user().id
+				temp_results += Task.where "body LIKE ? AND user_id=?", "%" + search_content + "%", current_user().id
 			end
 			
 			if search_tag.strip != ""
 
-				@matched_tags = Tag.where name: search_tag
+				@matched_tags = Tag.where name: search_tag, user: current_user
 
 				if @matched_tags.any?
 					temp_results.each do |r|

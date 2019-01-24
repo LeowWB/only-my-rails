@@ -2,7 +2,7 @@ class TaggingController < ApplicationController
 
 	def create
 		
-		existing_tag = Tag.where(name: tag_params.fetch(:name))
+		existing_tag = Tag.where(name: tag_params.fetch(:name), user: current_user)
 
 		if existing_tag.any?
 
@@ -19,6 +19,7 @@ class TaggingController < ApplicationController
 		else
 			
 			@tag = Tag.new tag_params
+			@tag.user = current_user
 
 			@tagging = Tagging.new
 			@tagging.tag = @tag
