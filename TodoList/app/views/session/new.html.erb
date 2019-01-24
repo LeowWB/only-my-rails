@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
+	<!-- login -->
+	
+	<h1>Sign in</h1>
+	
 	<div>
 		<%= form_for :session, url: "/login" do |f|%>
 
-			<%= f.text_field :username %>
-			<%= f.text_field :password %>
-			<%= f.submit "Login" %>
+			Username:<%= f.text_field :username %><br>
+			Password:<%= f.text_field :password %><br>
+			<%= f.submit "Sign in" %>
 
 		<% end %>
 	</div>

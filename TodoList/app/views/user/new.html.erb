@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
+	<!-- create new user -->
+
+	<h1>Create new user</h1>
+	
 	<div>
 		<%= form_for :user do |f| %>
-			<%= f.text_field :username %>
-			<%= f.text_field :password %>
+			Username: <%= f.text_field :username %><br>
+			Password: <%= f.text_field :password %><br>
 			<%= f.submit "Create account" %>
 		<% end %>
 	</div>

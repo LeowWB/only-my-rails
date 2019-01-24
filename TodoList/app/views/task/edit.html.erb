@@ -1,8 +1,12 @@
 <!DOCTYPE HTML>
 <html>
+	<!-- edit a task -->
+	
+	<h1>Edit task</h1>
+	
 	<%= form_for @task do |f| %>
-		<%= f.text_field :head, value: @task.head %>
-		<%= f.text_field :body, value: @task.body %>
+		Head: <%= f.text_field :head, value: @task.head %><br>
+		Body: <%= f.text_field :body, value: @task.body %><br>
 
 		<%= f.submit "Confirm" %>
 
