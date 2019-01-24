@@ -7,8 +7,8 @@
 
 	<div>
 		<% @tasks.each do |t| %>
-			<div>
-				<%= link_to t.head, task_path(t) %>
+			<div class="task_overview">
+				<%= link_to t.head, task_path(t), class: "task_title_link"%>
 				
 				<br>
 				Tags:

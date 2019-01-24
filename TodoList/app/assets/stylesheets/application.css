@@ -27,3 +27,11 @@ html {
 	display: inline-block;
 	float: right;
 }
+
+.task_overview {
+	padding-bottom: 5px;
+}
+
+.task_title_link {
+	font-size: 15px;
+}

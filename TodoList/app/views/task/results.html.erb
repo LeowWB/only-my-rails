@@ -9,17 +9,17 @@
 			No results found.
 		<% else %>
 			<% @results.each do |t| %>
-				<div>
-				<%= link_to t.head, task_path(t) %>
-				
-				<br>
-				Tags: 
+				<div class="task_overview">
+					<%= link_to t.head, task_path(t), class: "task_title_link"%>
+					
+					<br>
+					Tags: 
 
-				<% t.tags.each do |tg| %>
-					<%= tg.name %>,
-				<% end %>
+					<% t.tags.each do |tg| %>
+						<%= tg.name %>,
+					<% end %>
 
-				<br>
+					<br>
 				</div>
 			<% end %>
 		<% end %>
