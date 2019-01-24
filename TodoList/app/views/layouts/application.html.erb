@@ -14,14 +14,21 @@
 
   <body>
 
-	<% if current_user %>
-		<%= link_to "Main", "/" %>
-		<%= current_user().username %>
-		<%= link_to "Logout", "/logout", method: "delete" %>
-	<% else %>
-		<%= link_to "Sign in", "/login" %>
-		<%= link_to "Sign up", "/signup" %>
-	<% end %>
+	<div id="top_bar">
+		<% if current_user %>
+			<%= link_to "Main", "/" %> |
+			<%= link_to "New", "/new" %> |
+			<%= link_to "Search", "/search" %>
+
+			<div class="align_right">
+				<%= current_user().username %> |
+				<%= link_to "Logout", "/logout", method: "delete" %>
+			</div>
+		<% else %>
+			<%= link_to "Sign in", "/login" %>
+			<%= link_to "Sign up", "/signup" %>
+		<% end %>
+	</div>
 
     <%= yield %>
   </body>

@@ -18,3 +18,12 @@ html {
 	font-family: "Lucida Sans Unicode", sans-serif;
 	font-size: 12px;
 }
+
+#top_bar {
+	background: #dddddd;
+}
+
+.align_right {
+	display: inline-block;
+	float: right;
+}
