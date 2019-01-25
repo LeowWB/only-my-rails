@@ -7,7 +7,7 @@
 	<div>
 		<%= form_for :user do |f| %>
 			Username: <%= f.text_field :username %><br>
-			Password: <%= f.text_field :password %><br>
+			Password: <%= f.password_field :password %><br>
 			<%= f.submit "Create account" %>
 		<% end %>
 	</div>
