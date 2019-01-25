@@ -8,9 +8,18 @@
 	<div>
 		<%= form_for :task do |f| %>
 
-			Head: <%= f.text_field :head %><br>
-			Body: <%= f.text_area :body %><br>
-			<%= f.submit "Create Task" %>
+			<table>
+				<tr>
+					<td>Head:</td>
+					<td><%= f.text_field :head, class: "task_head_field"%></td>
+				</tr>
+				<tr>
+					<td>Body:</td>
+					<td><%= f.text_area :body, class: "task_body_area" %></td>
+				</tr>
+			</table>
+
+			<td><%= f.submit "Create" %>
 
 		<% end %>
 

@@ -7,9 +7,17 @@
 	<div>
 		<%= form_for :session, url: "/login" do |f|%>
 
-			Username:<%= f.text_field :username %><br>
-			Password:<%= f.password_field :password %><br>
-			<%= f.submit "Sign in" %>
+			<table>
+				<tr>
+					<td>Username:</td>
+					<td><%= f.text_field :username %></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><%= f.password_field :password %></td>
+				</tr>
+			</table>
+			<%= f.submit "Sign in", class: "submit_button" %>
 
 		<% end %>
 	</div>

@@ -7,15 +7,21 @@
 
 	<div>
 		<%= form_for :search_term do |f| %>
-			Search by content:<%= f.text_field :search_content %><br>
-			Search by tag:<%= f.text_field :search_tag %>
-
-			<br>
+			<table>
+				<tr>
+					<td>Search by content:</td>
+					<td><%= f.text_field :search_content %></td>
+				</tr>
+				<tr>
+					<td>Search by tag:</td>
+					<td><%= f.text_field :search_tag %></td>
+				</tr>
+			</table>
 
 			<%= f.radio_button :search_type, "or", checked: true %>Match at least one <br>
 			<%= f.radio_button :search_type, "and" %>Match both<br>
 
-			<%= f.submit "Search" %>
+			<%= f.submit "Search", class: "submit_button"  %>
 		<% end %>
 
 		<%= link_to "Back", "/" %>

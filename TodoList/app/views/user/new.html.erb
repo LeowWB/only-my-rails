@@ -6,9 +6,17 @@
 	
 	<div>
 		<%= form_for :user do |f| %>
-			Username: <%= f.text_field :username %><br>
-			Password: <%= f.password_field :password %><br>
-			<%= f.submit "Create account" %>
+		<table>
+			<tr>
+				<td>Username:</td>
+				<td><%= f.text_field :username %></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><%= f.password_field :password %></td>
+			</tr>
+		</table>
+			<%= f.submit "Create account", class: "submit_button" %>
 		<% end %>
 	</div>
 </html>

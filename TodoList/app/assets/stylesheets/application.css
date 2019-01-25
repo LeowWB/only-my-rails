@@ -52,3 +52,20 @@ html {
 	line-height: 0px;
 	padding-bottom: 15px;
 }
+
+.submit_button {
+	font-family: "Lucida Sans Unicode", sans-serif;
+	font-size: 13px;
+}
+
+textarea {
+	height: 100px;
+}
+
+.task_body_area {
+	width: 300px;
+}
+
+.task_head_field {
+	width: 300px;
+}
