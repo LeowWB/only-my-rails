@@ -35,3 +35,20 @@ html {
 .task_title_link {
 	font-size: 15px;
 }
+
+.show_task_title {
+	padding-top: 20px;
+	font-size: 30px;
+	padding-bottom: 5px;
+}
+
+.show_task_timestamp {
+	padding-top: 0px;
+	padding-bottom: 22px;
+	line-height: 0px;
+}
+
+.show_task_links {
+	line-height: 0px;
+	padding-bottom: 15px;
+}

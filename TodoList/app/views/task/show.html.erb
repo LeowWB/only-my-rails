@@ -3,17 +3,22 @@
 	<!-- view a specific task -->
 	
 	<div>
-		<h1> <%= @task.head %> </h1>
-		<%= "Created at #{@task.created_at}" %>
+		<div class="show_task_title"> <%= @task.head %> </div>
+		<div class="show_task_timestamp"><%= "Created at #{@task.created_at}" %> </div>
+		<div class="show_task_links">
+			<%= link_to "Edit", "/tasks/#{@task.id}/edit" %>
+			<%= link_to "Delete", "/tasks/#{@task.id}", method:"delete"%>
+			<%= link_to "Back", "/" %>
+		</div>
 	</div>
-
+	<br>
 	<div><%= @task.body %> </div>
-
+	<br>
 	<div>
-		Tags:
+		<b>Tags:</b><br>
 		<% @task.tags.each do |tg| %>
-			<%= tg.name %>
 			<%= link_to "x", "/tasks/#{@task.id}/delete_tag/#{tg.id}", method:"delete" %>
+			<%= tg.name %>
 			<br>
 		<% end %>
 	</div>
@@ -23,8 +28,4 @@
 		<%= f.submit "Add tag" %>
 	<% end %>
 
-	<%= link_to "Edit", "/tasks/#{@task.id}/edit" %>
-	<%= link_to "Delete", "/tasks/#{@task.id}", method:"delete"%>
-	
-	<%= link_to "Back", "/" %>
 </html>
