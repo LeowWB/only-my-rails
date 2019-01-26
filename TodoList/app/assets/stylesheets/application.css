@@ -44,13 +44,14 @@ html {
 
 .show_task_timestamp {
 	padding-top: 0px;
-	padding-bottom: 22px;
-	line-height: 0px;
+	padding-bottom: 0px;
+	line-height: 17px;
 }
 
 .show_task_links {
-	line-height: 0px;
-	padding-bottom: 15px;
+	padding-top: 5px;
+	line-height: 15px;
+	padding-bottom: 0px;
 }
 
 .submit_button {

@@ -4,7 +4,10 @@
 	
 	<div>
 		<div class="show_task_title"> <%= @task.head %> </div>
-		<div class="show_task_timestamp"><%= "Created at #{@task.created_at}" %> </div>
+		<div class="show_task_timestamp">
+			<%= "Created at #{@task.created_at}." %>
+			<%= "Last updated at #{@task.updated_at}." %> 
+		</div>
 		<div class="show_task_links">
 			<%= link_to "Edit", "/tasks/#{@task.id}/edit" %>
 			<%= link_to "Delete", "/tasks/#{@task.id}", method:"delete"%>
