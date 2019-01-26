@@ -6,19 +6,31 @@
 	<h1>All tasks</h1>
 
 	<div>
-		<% @tasks.each do |t| %>
-			<div class="task_overview">
-				<%= link_to t.head, task_path(t), class: "task_title_link"%>
-				
-				<br>
-				Tags:
+		<table>
+			<% @tasks.each do |t| %>
+				<tr>
+					<td>
+						<div class="task_overview">
+							<%= link_to t.head, task_path(t), class: "task_title_link"%>
+							
+							<br>
+							Tags:
 
-				<% t.tags.each do |tg| %>
-					<%= tg.name %>, 
-				<% end %>
+							<% t.tags.each do |tg| %>
+								<%= tg.name %>, 
+							<% end %>
 
-				<br>
-			</div>
-		<% end %>
+							<br>
+						</div>
+					</td>
+					<td>
+						<%= t.created_at %>
+					</td>
+					<td>
+						<%= t.updated_at %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
 	</div>
 </html>
