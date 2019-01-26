@@ -75,3 +75,10 @@ textarea {
 	font-style: bold;
 	color: red;
 }
+
+.table_header {
+	font-size: 15px;
+	font-style: bold;
+	text-transform: uppercase;
+	width: 225px;
+}
