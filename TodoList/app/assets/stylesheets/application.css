@@ -69,3 +69,8 @@ textarea {
 .task_head_field {
 	width: 300px;
 }
+
+.error_message {
+	font-style: bold;
+	color: red;
+}

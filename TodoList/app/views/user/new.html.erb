@@ -6,6 +6,11 @@
 	
 	<div>
 		<%= form_for :user do |f| %>
+
+		<% if flash[:error_message] %>
+			<div class="error_message"><%= flash[:error_message] %></div>
+		<% end %>
+
 		<table>
 			<tr>
 				<td>Username:</td>
