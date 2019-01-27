@@ -9,15 +9,20 @@
 		<%= form_for :search_term do |f| %>
 			<table>
 				<tr>
+					<!-- Search by content allows user to enter a string, and obtain all tasks whose head or body contains
+					the entered string as a substring -->
 					<td>Search by content:</td>
 					<td><%= f.text_field :search_content %></td>
 				</tr>
 				<tr>
+					<!-- search by tag allows user to specify a tag, and obtain all tasks which have that exact tag as a match -->
 					<td>Search by tag:</td>
 					<td><%= f.text_field :search_tag %></td>
 				</tr>
 			</table>
 
+			<!-- radio buttons. user can choose to search for all tasks that match at least one of the specified criteria,
+			or both -->
 			<%= f.radio_button :search_type, "or", checked: true %>Match at least one <br>
 			<%= f.radio_button :search_type, "and" %>Match both<br>
 

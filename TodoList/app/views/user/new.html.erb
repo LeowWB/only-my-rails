@@ -7,6 +7,8 @@
 	<div>
 		<%= form_for :user do |f| %>
 
+		<!-- if the user controller indicates that a user with the same username already exists, then indicate this
+		to the user and prompt them to try again. -->
 		<% if flash[:error_message] %>
 			<div class="error_message"><%= flash[:error_message] %></div>
 		<% end %>

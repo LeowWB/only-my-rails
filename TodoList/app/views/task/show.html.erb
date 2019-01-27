@@ -3,11 +3,14 @@
 	<!-- view a specific task -->
 	
 	<div>
+		<!-- basic information about the task -->
 		<div class="show_task_title"> <%= @task.head %> </div>
 		<div class="show_task_timestamp">
 			<%= "Created at #{@task.created_at}." %>
 			<%= "Last updated at #{@task.updated_at}." %> 
 		</div>
+
+		<!-- these links allow the user to edit or delete a task. "Back" returns to the main index page. -->
 		<div class="show_task_links">
 			<%= link_to "Edit", "/tasks/#{@task.id}/edit" %>
 			<%= link_to "Delete", "/tasks/#{@task.id}", method:"delete"%>
@@ -18,6 +21,8 @@
 	<div><%= @task.body %> </div>
 	<br>
 	<div>
+		<!-- display a list of all tags of the task. adjacent to each tag is an "x" that can be selected to remove the
+		respective tag from the task -->
 		<b>Tags:</b><br>
 		<% @task.tags.each do |tg| %>
 			<%= link_to "x", "/tasks/#{@task.id}/delete_tag/#{tg.id}", method:"delete" %>
@@ -26,6 +31,7 @@
 		<% end %>
 	</div>
 
+	<!-- this form allows the user to add new tags to the task -->
 	<%= form_for :tag do |f|%>
 		<%= f.text_field :name %>
 		<%= f.submit "Add tag", class: "submit_button" %>

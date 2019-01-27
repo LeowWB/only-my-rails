@@ -4,15 +4,19 @@
 	
 	<h1>All tasks</h1>
 
+	<!-- if-statement checks if any tasks exist under the user's account. if they do, then display the usual all tasks display.
+	if the user has not created any tasks, prompt the user to create one. -->
 	<% if @tasks.any? %>
 
 		<% sort_options = ["Alphabetical", "Reverse Alphabetical", "Created", "Reverse Created", "Updated", "Reverse Updated"] %>
-		
+
+		<!-- allows user to select a criterion by which they want to sort their tasks. -->
 		<%= form_for :sort_type, html: {method: "GET"} do |f| %>
 			<%= f.select :type, sort_options, selected: (params[:sort_type] ? params[:sort_type][:type] : sort_options[0]) %>
 			<%= f.submit "Sort" %>
 		<% end %> 
 
+		<!-- main display - a table of all tasks -->
 		<div>
 			<table>
 				<th>
@@ -23,7 +27,7 @@
 					</tr>
 				</th>
 
-
+				<!-- before the tasks are displayed, we sort them according to the user's specified criterion -->
 				<% if params[:sort_type] and params[:sort_type][:type] %>
 
 					<% pst = params[:sort_type][:type] %>
@@ -47,7 +51,7 @@
 
 				<% end %>
 
-
+				<!-- now we display task info -->
 				<% @tasks.each do |t| %>
 					<tr>
 						<td>
@@ -57,6 +61,7 @@
 								<br>
 								Tags:
 
+								<!-- display the tags that each task has been given -->
 								<% t.tags.each do |tg| %>
 									<%= tg.name %>, 
 								<% end %>
@@ -75,6 +80,7 @@
 			</table>
 		</div>
 	<% else %>
+		<!-- prompt the user if no tasks exist -->
 		<div>
 			There seems to be no tasks here. Click on New at the top-left to create one!
 		</div>

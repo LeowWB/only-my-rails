@@ -2,6 +2,8 @@
 <html>
 	<!-- login -->
 
+	<!-- if-statement checks if there is already a user logged in. if there is, then indicate this fact to the user. if
+	there isn't, then display the normal sign in screen. -->
 	<% if current_user %>
 		<div>
 			<br>
@@ -10,10 +12,13 @@
 	<% else %>
 		<h1>Sign in</h1>
 		
-		<% if flash[:error] %>
-			<div class="error_message">We did not recognize that combination of username and password. Please try again.</div>
+		<!-- check if there was an error the last time the user tried to sign in. if there was, then display a prompt to
+		the user. -->
+		<% if flash[:error_message] %>
+			<div class="error_message"><%= flash[:error_message] %></div>
 		<% end %>
 
+		<!-- sign-in form -->
 		<div>
 			<%= form_for :session, url: "/login" do |f|%>
 

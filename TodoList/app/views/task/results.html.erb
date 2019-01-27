@@ -5,6 +5,7 @@
 	
 	<h1>Search Results</h1>
 	<div>
+		<!-- if no results are found then indicate this to the user -->
 		<% if @results.length == 0 %>
 			No results found.
 		<% else %>
@@ -15,6 +16,7 @@
 					<br>
 					Tags: 
 
+					<!-- for all tasks, display a list of that task's tags underneath the task -->
 					<% t.tags.each do |tg| %>
 						<%= tg.name %>,
 					<% end %>
