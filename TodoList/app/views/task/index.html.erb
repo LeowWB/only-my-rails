@@ -4,72 +4,79 @@
 	
 	<h1>All tasks</h1>
 
-	<% sort_options = ["Alphabetical", "Reverse Alphabetical", "Created", "Reverse Created", "Updated", "Reverse Updated"] %>
-	
-	<%= form_for :sort_type, html: {method: "GET"} do |f| %>
-		<%= f.select :type, sort_options, selected: (params[:sort_type] ? params[:sort_type][:type] : sort_options[0]) %>
-		<%= f.submit "Sort" %>
-	<% end %> 
+	<% if @tasks.any? %>
 
-	<div>
-		<table>
-			<th>
-				<tr>
-					<td class="table_header">Task</td>
-					<td class="table_header">Created</td>
-					<td class="table_header">Updated</td>
-				</tr>
-			</th>
+		<% sort_options = ["Alphabetical", "Reverse Alphabetical", "Created", "Reverse Created", "Updated", "Reverse Updated"] %>
+		
+		<%= form_for :sort_type, html: {method: "GET"} do |f| %>
+			<%= f.select :type, sort_options, selected: (params[:sort_type] ? params[:sort_type][:type] : sort_options[0]) %>
+			<%= f.submit "Sort" %>
+		<% end %> 
+
+		<div>
+			<table>
+				<th>
+					<tr>
+						<td class="table_header">Task</td>
+						<td class="table_header">Created</td>
+						<td class="table_header">Updated</td>
+					</tr>
+				</th>
 
 
-			<% if params[:sort_type] and params[:sort_type][:type] %>
+				<% if params[:sort_type] and params[:sort_type][:type] %>
 
-				<% pst = params[:sort_type][:type] %>
+					<% pst = params[:sort_type][:type] %>
 
-				<% if pst == sort_options[0] %>
-					<% @tasks = @tasks.sort_by {|t| t.head} %>
-				<% elsif pst == sort_options[1] %>
-					<% @tasks = @tasks.sort_by {|t| t.head} %>
-					<% @tasks = @tasks.reverse %>
-				<% elsif pst == sort_options[2] %>
-					<% @tasks = @tasks.sort_by {|t| t.created_at} %>
-				<% elsif pst == sort_options[3] %>
-					<% @tasks = @tasks.sort_by {|t| t.created_at} %>
-					<% @tasks = @tasks.reverse %>
-				<% elsif pst == sort_options[4] %>
-					<% @tasks = @tasks.sort_by {|t| t.updated_at} %>
-				<% elsif pst == sort_options[5] %>
-					<% @tasks = @tasks.sort_by {|t| t.updated_at} %>
-					<% @tasks = @tasks.reverse %>
+					<% if pst == sort_options[0] %>
+						<% @tasks = @tasks.sort_by {|t| t.head} %>
+					<% elsif pst == sort_options[1] %>
+						<% @tasks = @tasks.sort_by {|t| t.head} %>
+						<% @tasks = @tasks.reverse %>
+					<% elsif pst == sort_options[2] %>
+						<% @tasks = @tasks.sort_by {|t| t.created_at} %>
+					<% elsif pst == sort_options[3] %>
+						<% @tasks = @tasks.sort_by {|t| t.created_at} %>
+						<% @tasks = @tasks.reverse %>
+					<% elsif pst == sort_options[4] %>
+						<% @tasks = @tasks.sort_by {|t| t.updated_at} %>
+					<% elsif pst == sort_options[5] %>
+						<% @tasks = @tasks.sort_by {|t| t.updated_at} %>
+						<% @tasks = @tasks.reverse %>
+					<% end %>
+
 				<% end %>
 
-			<% end %>
 
+				<% @tasks.each do |t| %>
+					<tr>
+						<td>
+							<div class="task_overview">
+								<%= link_to t.head, task_path(t), class: "task_title_link"%>
+								
+								<br>
+								Tags:
 
-			<% @tasks.each do |t| %>
-				<tr>
-					<td>
-						<div class="task_overview">
-							<%= link_to t.head, task_path(t), class: "task_title_link"%>
-							
-							<br>
-							Tags:
+								<% t.tags.each do |tg| %>
+									<%= tg.name %>, 
+								<% end %>
 
-							<% t.tags.each do |tg| %>
-								<%= tg.name %>, 
-							<% end %>
-
-							<br>
-						</div>
-					</td>
-					<td>
-						<%= t.created_at %>
-					</td>
-					<td>
-						<%= t.updated_at %>
-					</td>
-				</tr>
-			<% end %>
-		</table>
-	</div>
+								<br>
+							</div>
+						</td>
+						<td>
+							<%= t.created_at %>
+						</td>
+						<td>
+							<%= t.updated_at %>
+						</td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	<% else %>
+		<div>
+			There seems to be no tasks here. Click on New at the top-left to create one!
+		</div>
+	<% end %>
 </html>
