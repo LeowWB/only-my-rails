@@ -10,6 +10,10 @@
 	<% else %>
 		<h1>Sign in</h1>
 		
+		<% if flash[:error] %>
+			<div class="error_message">We did not recognize that combination of username and password. Please try again.</div>
+		<% end %>
+
 		<div>
 			<%= form_for :session, url: "/login" do |f|%>
 
