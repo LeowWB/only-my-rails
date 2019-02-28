@@ -13,7 +13,7 @@
 		<!-- these links allow the user to edit or delete a task. "Back" returns to the main index page. -->
 		<div class="show_task_links">
 			<%= link_to "Edit", "/tasks/#{@task.id}/edit" %>
-			<%= link_to "Delete", "/tasks/#{@task.id}", method:"delete"%>
+			<%= button_to "Delete", "/tasks/#{@task.id}", method:"delete", class:"link_button"%>
 			<%= link_to "Back", "/" %>
 		</div>
 	</div>
@@ -25,9 +25,9 @@
 		respective tag from the task -->
 		<b>Tags:</b><br>
 		<% @task.tags.each do |tg| %>
-			<%= link_to "x", "/tasks/#{@task.id}/delete_tag/#{tg.id}", method:"delete" %>
-			<%= tg.name %>
-			<br>
+			<%= button_to "x", "/tasks/#{@task.id}/delete_tag/#{tg.id}", method:"delete", class:"link_button" %>
+			<%= tg.name%>
+			<br/>
 		<% end %>
 	</div>
 

@@ -14,9 +14,20 @@
  *= require_self
  */
 
-html {
+html, .link_button {
 	font-family: "Lucida Sans Unicode", sans-serif;
 	font-size: 12px;
+}
+
+.link_button {
+	color: red;
+	font-weight: bold;
+	background-color: transparent;
+	border-width: 0px;
+}
+
+.button_to {
+	display: inline-block;
 }
 
 #top_bar {
